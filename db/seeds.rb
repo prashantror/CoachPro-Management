@@ -16,8 +16,7 @@ company_attributes = [
     city: "City A",
     state: "State A",
     country: "Country A",
-    phone_number: "123-456-7890",
-    slug: "company-a"
+    phone_number: "123-456-7890"
   },
   {
     name: "Company B",
@@ -26,8 +25,7 @@ company_attributes = [
     city: "City B",
     state: "State B",
     country: "Country B",
-    phone_number: "987-654-3210",
-    slug: "company-b"
+    phone_number: "987-654-3210"
   },
 ]
 
@@ -35,7 +33,7 @@ company_attributes = [
 company_attributes.each do |attributes|
   company = Company.create(attributes)
 
-  logo_file_path = Rails.root.join('vendor', 'default-company-logo.png')
+  logo_file_path = Rails.root.join('app', 'assets', 'images', 'default-company-logo.png')
   if File.exist?(logo_file_path)
     company.logo.attach(io: File.open(logo_file_path), filename: 'default-company-logo.png', content_type: 'image/png')
   else

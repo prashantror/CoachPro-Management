@@ -5,7 +5,7 @@ ActiveAdmin.register Coach do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :email, :password, :password_confirmation
+  permit_params :email, :first_name, :last_name, :phone_number, :slug, :password, :password_confirmation, program_ids: []
   #
   # or
   #
@@ -15,4 +15,32 @@ ActiveAdmin.register Coach do
   #   permitted
   # end
   config.filters = false
+
+  form do |f|
+    f.semantic_errors
+    inputs do
+      input :email
+      input :first_name
+      input :last_name
+      input :phone_number
+      if f.object.new_record?
+        input :password
+        input :password_confirmation
+      end
+      f.input :programs, as: :select, collection: Program.all.map { |p| [p.name, p.id] }
+    end
+    f.actions
+  end
+
+  show do
+    panel "Coach Details" do
+      attributes_table_for coach do
+        row :email
+        row :first_name
+        row :last_name
+        row :phone_number
+        row :programs
+      end
+    end
+  end
 end

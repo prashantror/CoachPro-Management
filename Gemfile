@@ -63,3 +63,6 @@ gem 'devise', '~> 4.7', '>= 4.7.1'
 gem 'cancancan'
 gem 'draper'
 gem 'pundit'
+
+gem 'friendly_id', '~> 5.5.0'
+gem 'country_select', '~> 8.0'
