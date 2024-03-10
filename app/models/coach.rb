@@ -1,0 +1,3 @@
+class Coach < User
+  
+end
