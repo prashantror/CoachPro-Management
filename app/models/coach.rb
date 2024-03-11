@@ -8,5 +8,5 @@
 class Coach < User
   has_many :company_programs, dependent: :destroy
 
-  accepts_nested_attributes_for :company_programs, allow_destroy: true
+  # accepts_nested_attributes_for :company_programs, allow_destroy: true
 end

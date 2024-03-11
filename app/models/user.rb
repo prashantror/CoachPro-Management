@@ -8,6 +8,6 @@ class User < ApplicationRecord
   validates :phone_number, length: { minimum: 10 }
 
   def name
-    first_name + ' ' + last_name
+    (first_name + ' ' + last_name) if first_name && last_name
   end
 end

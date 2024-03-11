@@ -12,19 +12,17 @@ Rails.application.routes.draw do
   get '*path', to: 'react#index', constraints: lambda { |req|
     !(req.path.include?('active_storage') ||  req.path.include?('admin'))
   }
-
-  # get '*', to: "react#index", constraints: lambda { |req|
-  #   req.path.exclude? 'admin'
-  # }
   ## -----------------------------------
 
 
   ## Rails routes
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
   devise_for :users
 
   get 'pages/home'
   get '/', to: "pages#home"
   ## -----------------------------------
+
+  # Admin routes
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  ## ----------------------------------
 end

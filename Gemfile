@@ -56,13 +56,11 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
-gem 'activeadmin'
-
-# Plus integrations with:
+# User authentication
 gem 'devise', '~> 4.7', '>= 4.7.1'
-gem 'cancancan'
-gem 'draper'
-gem 'pundit'
 
+# For friendly URL
 gem 'friendly_id', '~> 5.5.0'
-gem 'country_select', '~> 8.0'
+
+# Admin panel
+gem 'rails_admin'
