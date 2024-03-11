@@ -64,3 +64,6 @@ gem 'friendly_id', '~> 5.5.0'
 
 # Admin panel
 gem 'rails_admin'
+
+# Process images
+gem 'image_processing', '~> 1.2'
