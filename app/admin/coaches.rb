@@ -5,7 +5,7 @@ ActiveAdmin.register Coach do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :email, :first_name, :last_name, :phone_number, :slug, :password, :password_confirmation, program_ids: []
+  permit_params :email, :first_name, :last_name, :phone_number, :slug, :password, :password_confirmation
   #
   # or
   #
@@ -27,7 +27,6 @@ ActiveAdmin.register Coach do
         input :password
         input :password_confirmation
       end
-      f.input :programs, as: :select, collection: Program.all.map { |p| [p.name, p.id] }
     end
     f.actions
   end
