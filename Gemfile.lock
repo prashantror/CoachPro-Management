@@ -91,12 +91,20 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise_invitable (2.0.9)
+      actionmailer (>= 5.0)
+      devise (>= 4.6)
+    devise_token_auth (1.2.2)
+      bcrypt (~> 3.0)
+      devise (> 3.5.2, < 5)
+      rails (>= 4.2.0, < 7.1)
     erubi (1.12.0)
     ffi (1.16.3)
     friendly_id (5.5.1)
       activerecord (>= 4.0.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    hashie (5.0.0)
     i18n (1.14.4)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.2)
@@ -148,6 +156,10 @@ GEM
     nio4r (2.7.0)
     nokogiri (1.16.2-x86_64-linux)
       racc (~> 1.4)
+    omniauth (2.1.2)
+      hashie (>= 3.4.6)
+      rack (>= 2.2.3)
+      rack-protection
     orm_adapter (0.5.0)
     pg (1.5.6)
     public_suffix (5.0.4)
@@ -157,6 +169,9 @@ GEM
     rack (2.2.8.1)
     rack-mini-profiler (2.3.4)
       rack (>= 1.2.0)
+    rack-protection (3.2.0)
+      base64 (>= 0.1.0)
+      rack (~> 2.2, >= 2.2.4)
     rack-proxy (0.7.7)
       rack
     rack-test (2.1.0)
@@ -275,10 +290,13 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   devise (~> 4.7, >= 4.7.1)
+  devise_invitable
+  devise_token_auth
   friendly_id (~> 5.5.0)
   image_processing (~> 1.2)
   jbuilder
   listen (~> 3.3)
+  omniauth (>= 1.0.0)
   pg (~> 1.1)
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)

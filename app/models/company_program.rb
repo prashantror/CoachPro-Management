@@ -5,4 +5,6 @@ class CompanyProgram < ApplicationRecord
 
   has_many :employee_company_programs, dependent: :destroy
   has_many :employees, through: :employee_company_programs
+
+  scope :enabled_programs, -> { joins(:program).where(program: {enabled: true}) }
 end

@@ -67,3 +67,7 @@ gem 'rails_admin'
 
 # Process images
 gem 'image_processing', '~> 1.2'
+
+# Apply token based authentication for APIs
+gem 'devise_token_auth'
+gem 'omniauth', '>= 1.0.0'
