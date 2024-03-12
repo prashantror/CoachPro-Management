@@ -9,5 +9,9 @@ class Api::V1::LandingPagesController < Api::V1::ApiController
 
   def set_company
     @company = Company.find_by(slug: params[:company_slug])
+
+    unless @company.present?
+      render json: { message: "#{params[:company_slug]} is not found", status: :not_found }, status: :not_found
+    end
   end
 end

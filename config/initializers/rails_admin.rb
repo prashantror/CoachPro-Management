@@ -80,7 +80,7 @@ RailsAdmin.config do |config|
     list do
       field :id
       field :name
-      field :discription
+      field :description
       field :enabled
 
     end
