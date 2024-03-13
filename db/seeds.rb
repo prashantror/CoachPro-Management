@@ -1,64 +1,70 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# Create Coaches
+5.times do
+  coach = Coach.create!(
+    email: Faker::Internet.email,
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    phone_number: Faker::PhoneNumber.phone_number,
+    password: 'password',
+    password_confirmation: 'password'
+  )
 
-company_attributes = [
-  {
-    name: "Company A",
-    email: "company-a@example.com",
-    address: "123 Main Street",
-    city: "City A",
-    state: "State A",
-    country: "Country A",
-    phone_number: "123-456-7890"
-  },
-  {
-    name: "Company B",
-    email: "company-b@example.com",
-    address: "456 Elm Street",
-    city: "City B",
-    state: "State B",
-    country: "Country B",
-    phone_number: "987-654-3210"
-  },
-]
+  puts "Coach created with email: #{coach.email}"
+end
 
-# Create companies using the attributes defined above
-company_attributes.each do |attributes|
-  company = Company.create(attributes)
+puts ''
 
-  logo_file_path = Rails.root.join('app', 'assets', 'images', 'default-company-logo.png')
-  if File.exist?(logo_file_path)
-    company.logo.attach(io: File.open(logo_file_path), filename: 'default-company-logo.png', content_type: 'image/png')
-  else
-    puts "Error: Logo file not found at #{logo_file_path}"
+# Create Companies
+5.times do
+  company = Company.create!(
+    name: Faker::Company.name,
+    email: Faker::Internet.email,
+    address: Faker::Address.street_address,
+    city: Faker::Address.city,
+    state: Faker::Address.state,
+    country: Faker::Address.country,
+    phone_number: Faker::PhoneNumber.phone_number
+  )
+
+  puts "Company created with name: #{company.name}"
+end
+
+puts ''
+
+# Create Programs
+5.times do
+  program = Program.create!(
+    name: Faker::Educator.course_name,
+    description: Faker::Lorem.paragraph,
+    enabled: true
+  )
+
+  puts "Program created with name: #{program.name}"
+end
+
+puts ''
+
+# Create CompanyPrograms
+Company.all.each do |company|
+  Program.all.each do |program|
+    company_program = CompanyProgram.create!(
+      company: company,
+      program: program,
+      coach: Coach.all.sample
+    )
+
+    puts "CompanyProgram created for #{company.name} - #{program.name}"
   end
 end
-puts "Seed data for companies created successfully."
 
+puts ''
 
-# Define an array of landing page attributes
-landing_page_attributes = [
-  {
-    heading: "Welcome to Company A",
-    description: "This is the landing page for Company A.",
-    company_id: Company.first.id
-  },
-  {
-    heading: "Welcome to Company B",
-    description: "This is the landing page for Company B.",
-    company_id: Company.second.id
-  }
-  # Add more landing page attributes as needed
-]
+# Create Landing Pages
+Company.all.each do |company|
+  landing_page = company.create_landing_page(
+    heading: Faker::Lorem.sentence,
+    description: Faker::Lorem.paragraph
+  )
 
-# Create landing pages using the attributes defined above
-# Create companies using the attributes defined above
-landing_page_attributes.each do |attributes|
-  LandingPage.create!(attributes)
+  puts "Landing Page created for #{company.name}"
 end
-puts "Seed data for landing page created successfully."

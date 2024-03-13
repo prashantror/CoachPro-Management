@@ -12,6 +12,7 @@ class Company < ApplicationRecord
   has_many :employees
 
   validates :name, :email, :address, :city, :state, :country, :phone_number, presence: true
+  validates :name, uniqueness: true
 
   def logo_url
     if logo.attached?

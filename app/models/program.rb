@@ -8,10 +8,8 @@ class Program < ApplicationRecord
   has_many :company_programs, dependent: :destroy
   has_many :companies, through: :company_programs
 
-  # has_many :coach_programs, dependent: :destroy
-  # has_many :coaches, through: :coach_programs
-
   validates :name, :description, presence: true
+  validates :name, uniqueness: true
 
   def cover_image_url
     if cover_image.attached?

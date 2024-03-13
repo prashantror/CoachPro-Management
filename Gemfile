@@ -83,3 +83,6 @@ gem 'pg_search'
 
 # Pagination
 gem 'will_paginate', '~> 4.0'
+
+# Generate Fake data
+gem 'faker'

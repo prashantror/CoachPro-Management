@@ -99,6 +99,8 @@ GEM
       devise (> 3.5.2, < 5)
       rails (>= 4.2.0, < 7.1)
     erubi (1.12.0)
+    faker (3.2.3)
+      i18n (>= 1.8.11, < 2)
     ffi (1.16.3)
     friendly_id (5.5.1)
       activerecord (>= 4.0.0)
@@ -300,6 +302,7 @@ DEPENDENCIES
   devise (~> 4.7, >= 4.7.1)
   devise_invitable (~> 2.0.0)
   devise_token_auth
+  faker
   friendly_id (~> 5.5.0)
   image_processing (~> 1.2)
   jbuilder
