@@ -77,3 +77,9 @@ gem 'devise_invitable', '~> 2.0.0'
 
 # Preview email in the browser
 gem "letter_opener", group: :development
+
+# Search
+gem 'pg_search'
+
+# Pagination
+gem 'will_paginate', '~> 4.0'

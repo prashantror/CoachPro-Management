@@ -1,4 +1,16 @@
 class Api::V1::ApiController < ApplicationController
   include DeviseTokenAuth::Concerns::SetUserByToken
   protect_from_forgery unless: -> { request.format.json? }
+
+  private
+
+  def apply_company_programs_search
+    if params[:search]
+      @company_programs = @company_programs.search_by_program_name(params[:search])
+    end
+  end
+
+  def apply_company_programs_pagination
+    @company_programs = @company_programs.paginate(page: (params[:page] || 1), per_page: (params[:per_page] || 10))
+  end
 end
