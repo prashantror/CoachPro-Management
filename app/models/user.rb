@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   include DeviseTokenAuth::Concerns::User
 
-  validates :first_name, :last_name, :phone_number, presence: true
+  validates :email, :first_name, :last_name, :phone_number, presence: true
   validates :phone_number, length: { minimum: 10 }
 
   def name

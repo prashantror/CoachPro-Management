@@ -1,6 +1,7 @@
 class Invitation < ApplicationRecord
   has_one :coach, dependent: :destroy
 
+  validates :email, :first_name, :last_name, :phone_number, presence: true
   after_create :invite_coach
 
   def invite_coach
