@@ -7,6 +7,7 @@ import Footer from './components/common/Footer';
 import FourOFour from './components/common/FourOFour';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import CompanyLanding from './components/companies/CompanyLanding';
+import AcceptInvitation from './components/users/AcceptInvitation';
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/company/:slug" element={<CompanyLanding />} />
           <Route path="/" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/users/invitation/accept" element={<AcceptInvitation />} />
           <Route path="*" element={<FourOFour />} />
         </Routes>
       </div>

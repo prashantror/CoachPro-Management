@@ -3,6 +3,7 @@ class Company < ApplicationRecord
   friendly_id :name, use: :slugged
 
   has_one_attached :logo
+  has_one_attached :cover_photo
   has_one :landing_page, dependent: :destroy
 
   has_many :company_programs, dependent: :destroy
@@ -17,6 +18,14 @@ class Company < ApplicationRecord
       Rails.application.routes.url_helpers.rails_blob_url(logo, only_path: true)
     else
       ActionController::Base.helpers.asset_url('default-company-logo.png')
+    end
+  end
+
+  def cover_photo_url
+    if cover_photo.attached?
+      Rails.application.routes.url_helpers.rails_blob_url(cover_photo, only_path: true)
+    else
+      ActionController::Base.helpers.asset_url('default-cover-image.png')
     end
   end
 end

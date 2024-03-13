@@ -94,6 +94,17 @@ RailsAdmin.config do |config|
     end
   end
 
+  # Invitation
+  config.model 'Invitation' do
+    edit do
+      exclude_fields :accepted, :coach
+    end
+
+    create do
+      exclude_fields :accepted, :coach
+    end
+  end
+
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory

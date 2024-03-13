@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable
 
@@ -12,5 +12,9 @@ class User < ApplicationRecord
 
   def name
     "#{first_name} #{last_name} (#{email})"
+  end
+
+  def mark_invitation_as_accepted
+    invitation.update(accepted: true)
   end
 end

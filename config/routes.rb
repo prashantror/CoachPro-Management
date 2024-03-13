@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
   ## API Routes
+  mount_devise_token_auth_for 'User', at: 'users', :controllers => {
+    registrations: "api/v1/users/registrations",
+    invitations: 'api/v1/users/invitations'
+  }
+
   namespace :api do
     namespace :v1 do
-      mount_devise_token_auth_for 'User', at: 'users', :controllers => {
-        :registrations => "api/v1/users/registrations"
-      }
+
       get 'companies/:company_slug/landing_page', to: "landing_pages#show"
       get '/dashboard', to: "users#dashboard"
       
@@ -18,16 +21,14 @@ Rails.application.routes.draw do
 
   ## React routes
   get '*path', to: 'react#index', constraints: lambda { |req|
-    !(req.path.include?('active_storage') ||  req.path.include?('admin') || req.path.include?('api'))
+    !(req.path.include?('active_storage') ||  req.path.include?('admin') || req.path.include?('api') || req.path.include?('invitation'))
   }
   ## -----------------------------------
 
 
   ## Rails routes
   root to: "react#index"
-  # devise_for :users
-
-  get 'pages/home'
+  # devise_for :users, controllers: { invitations: 'users/invitations' }
   ## -----------------------------------
 
   # Admin routes
