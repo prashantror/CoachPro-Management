@@ -7,9 +7,10 @@ module Api
         protected
 
         def render_create_success
+          company_slug = (@resource.type == 'Employee') ? @resource.company&.slug : nil
           render json: {
             data: resource_data(resource_json: @resource.token_validation_response)
-              .merge(type: @resource.type.downcase)
+              .merge(type: @resource.type.downcase, company_slug: company_slug)
           }
         end
       end
