@@ -12,15 +12,15 @@ const Login = () => {
     event.preventDefault();
     const formData = new FormData(event.target);
     let data = Object.fromEntries(formData.entries());
-    console.log(data, "::: data");
     let { response, error } = await AxiosAPIHelper({ method: 'post', url: '/users/sign_in', data })
+
     if (response) {
       setErrors((prev) => ({
         ...prev,
         formError: ''
       }))
-
-      // localStorage.setItem("user", JSON.stringify({ ...data, type: "coach" }));
+      localStorage.setItem("user", JSON.stringify({ ...response.data }));
+      navigate(`/company/${response?.data?.company_slug}`)
     }
     else if (error) {
       let errormessage = error?.errors
@@ -33,8 +33,6 @@ const Login = () => {
         behavior: 'smooth'
       });
     }
-    console.log(response, "::: response");
-    console.log(error, "::: error");
   };
 
   return (

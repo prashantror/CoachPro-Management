@@ -16,12 +16,10 @@ const router = createBrowserRouter([
         children: PublicRoutes
       },
       {
-        path: 'coach',
         element: <PrivateRoute type='coach' />,
         children: CoachRoutes
       },
       {
-        path: 'employee',
         element: <PrivateRoute type='employee' />,
         children: EmployeeRoutes
       }

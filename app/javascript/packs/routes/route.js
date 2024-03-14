@@ -26,15 +26,14 @@ export const PrivateRoute = (props) => {
 
 export const PublicRoute = () => {
   let userDetails = JSON.parse(localStorage.getItem("user"));
-  console.log(userDetails, ":::: userDetails");
   let user = userDetails?.type || "";
 
   let userType = {
     coach: "coach",
-    employee: "employee",
+    employee: "company",
   };
   if (user) {
-    return <Navigate to={user} />;
+    return <Navigate to={userType[user]} />;
   }
   return (
     <>

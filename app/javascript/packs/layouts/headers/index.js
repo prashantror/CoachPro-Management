@@ -1,14 +1,11 @@
 import React from "react";
 import "./Headers.css";
-import { useNavigate } from "react-router-dom";
 import LandingPageHeader from "./LandingHeader";
+import PrivateHeader from "./privateHeader";
 const Headers = (props) => {
   let { type } = props;
-  const navigate = useNavigate();
-  return type === "coach" ? (
-    <>coach header</>
-  ) : type === "employee" ? (
-    <>Employee</>
+  return type ? (
+    <PrivateHeader />
   ) : <LandingPageHeader />;
 };
 

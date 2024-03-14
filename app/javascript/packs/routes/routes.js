@@ -1,35 +1,43 @@
 import React from 'react';
-import * as Pages from './../pages'
+import Login from '../pages/login';
+import SignUp from '../pages/signUp';
+import CoachHome from '../pages/coach/coachHome';
+import AcceptInvitation from '../pages/acceptInvitation';
+import CompanyLanding from '../pages/companyLanding';
 
 export const PublicRoutes = [
   {
-    index: true,
+    path:'/',
     element: <p>Home</p>,
   },
   {
     path: "/login",
-    element: <Pages.Login />,
+    element: <Login />,
   },
   {
     path: "/sign-up",
-    element: <Pages.SignUp />,
+    element: <SignUp />,
   },
+  {
+    path: '/accept-invitation',
+    element: <AcceptInvitation />
+  }
 ];
 
 export const CoachRoutes = [
   {
-    index: true,
-    element: <p>Coach Home</p>,
-  },
-  {
-    path: "/coach",
-    element: <Pages.CoachHome />,
+    path: "coach",
+    element: <CoachHome />,
   },
 ];
 
 export const EmployeeRoutes = [
   {
-    index: true,
-    element: <p>Employee Home</p>,
+    path: 'company',
+    element: <CompanyLanding />,
   },
+  {
+    path: 'company/:company_slug',
+    element: <CompanyLanding />
+  }
 ];
