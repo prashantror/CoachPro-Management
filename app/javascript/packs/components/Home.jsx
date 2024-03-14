@@ -25,11 +25,11 @@ const Home = () => {
     <div>
       {companies.length > 0 ? (
         <div>
-          <select>
+          <select onChange={handleCompanyChange}>
             <option value="">Select a company</option>
-            {companies.map(company => (
-              <option key={company.slug} value={company.slug}>{company.name}</option>
-            ))}
+              {companies.map(company => (
+                  <option key={company.slug} value={company.slug}>{company.name}</option>
+              ))}
           </select>
         </div>
       ) : (
