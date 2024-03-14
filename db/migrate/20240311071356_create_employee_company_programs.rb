@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateEmployeeCompanyPrograms < ActiveRecord::Migration[6.1]
   def change
     create_table :employee_company_programs do |t|

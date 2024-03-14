@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Company, type: :model do
@@ -6,24 +8,24 @@ RSpec.describe Company, type: :model do
   let(:existing_company) { create(:company) }
 
   describe 'associations' do
-    context "company_programs" do
+    context 'company_programs' do
       relation = described_class.reflect_on_association(:company_programs)
       it { expect(relation.macro).to eq :has_many }
     end
-    
-    context "landing_page" do
+
+    context 'landing_page' do
       relation = described_class.reflect_on_association(:landing_page)
       it { expect(relation.macro).to eq :has_one }
       it { expect(relation.options[:dependent]).to eq :destroy }
     end
 
-    context "programs" do
+    context 'programs' do
       relation = described_class.reflect_on_association(:programs)
       it { expect(relation.macro).to eq :has_many }
       it { expect(relation.options[:through]).to eq :company_programs }
     end
 
-    context "employees" do
+    context 'employees' do
       relation = described_class.reflect_on_association(:employees)
       it { expect(relation.macro).to eq :has_many }
     end

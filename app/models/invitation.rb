@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Invitation < ApplicationRecord
   has_one :coach, dependent: :destroy
 
@@ -9,10 +11,11 @@ class Invitation < ApplicationRecord
   validate :unique_coach
 
   def invite_coach
-    Coach.invite!(email: email, first_name: first_name, last_name: last_name, phone_number: phone_number, invitation_id: id)
+    Coach.invite!(email: email, first_name: first_name, last_name: last_name, phone_number: phone_number,
+                  invitation_id: id)
   end
 
   def unique_coach
-    errors.add(:email, "already present for a coach.") if Coach.find_by(email: email)
+    errors.add(:email, 'already present for a coach.') if Coach.find_by(email: email)
   end
 end

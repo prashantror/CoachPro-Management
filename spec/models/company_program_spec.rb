@@ -1,29 +1,31 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe CompanyProgram, type: :model do
   describe 'associations' do
     let(:response) { described_class.new }
-    context "company" do
+    context 'company' do
       relation = described_class.reflect_on_association(:company)
       it { expect(relation.macro).to eq :belongs_to }
     end
 
-    context "program" do
+    context 'program' do
       relation = described_class.reflect_on_association(:program)
       it { expect(relation.macro).to eq :belongs_to }
     end
 
-    context "coach" do
+    context 'coach' do
       relation = described_class.reflect_on_association(:coach)
       it { expect(relation.macro).to eq :belongs_to }
     end
-    
-    context "employee_company_programs" do
+
+    context 'employee_company_programs' do
       relation = described_class.reflect_on_association(:employee_company_programs)
       it { expect(relation.macro).to eq :has_many }
     end
 
-    context "employee_company_programs" do
+    context 'employee_company_programs' do
       relation = described_class.reflect_on_association(:employees)
       it { expect(relation.macro).to eq :has_many }
     end
@@ -59,7 +61,7 @@ RSpec.describe CompanyProgram, type: :model do
     it 'orders by created_at in descending order' do
       first_company_program = create(:company_program)
       second_company_program = create(:company_program)
-      
+
       expect(CompanyProgram.all).to eq([second_company_program, first_company_program])
     end
   end
