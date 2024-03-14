@@ -10,6 +10,13 @@ class Api::V1::ApiController < ApplicationController
     end
   end
 
+  def set_company_programs_meta_data
+    @metadata = {
+      total_count: @company_programs.count,
+      current_page: params[:page] || 1
+    }
+  end
+
   def apply_company_programs_pagination
     @company_programs = @company_programs.paginate(page: (params[:page] || 1), per_page: (params[:per_page] || 10))
   end

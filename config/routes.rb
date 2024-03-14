@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   ## API Routes
   mount_devise_token_auth_for 'User', at: 'users', :controllers => {
     registrations: "api/v1/users/registrations",
+    sessions: "api/v1/users/sessions",
     invitations: 'api/v1/users/invitations'
   }
 
