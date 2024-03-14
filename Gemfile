@@ -86,3 +86,11 @@ gem 'will_paginate', '~> 4.0'
 
 # Generate Fake data
 gem 'faker'
+
+
+## Test cases
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+end
+

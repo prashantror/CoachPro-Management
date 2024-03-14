@@ -1,0 +1,7 @@
+FactoryBot.define do
+  factory :company_program do
+    association :company
+    association :program
+    association :coach
+  end
+end

@@ -36,7 +36,7 @@ puts ''
   program = Program.create!(
     name: Faker::Educator.course_name,
     description: Faker::Lorem.paragraph,
-    enabled: true
+    enabled: Faker::Boolean.boolean
   )
 
   puts "Program created with name: #{program.name}"
