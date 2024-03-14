@@ -46,9 +46,13 @@ header {
   padding-top: 2em;
 }
 
+.main-banner {
+  height: 20rem;
+}
+
 img.cover-img {
   width: 100%;
-  height: 40vh;
+  height: 100%;
 }
 
 .logo-container {
@@ -61,4 +65,8 @@ img.cover-img {
 
 .logo-container .logo-img {
   width: 100%;
+}
+
+.h-100-vh {
+  height: 100vh !important;
 }
