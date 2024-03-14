@@ -1,2 +1,8 @@
-module Api::V1::LandingPagesHelper
+# frozen_string_literal: true
+
+module Api
+  module V1
+    module LandingPagesHelper
+    end
+  end
 end

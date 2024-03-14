@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.id @company_program.id
 json.name @company_program.program.name
 json.description @company_program.program.description

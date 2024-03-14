@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 # spec/models/invitation_spec.rb
 
 require 'rails_helper'
 
 RSpec.describe Invitation, type: :model do
-  describe "validations" do
+  describe 'validations' do
     it { should validate_presence_of(:email) }
     it { should validate_presence_of(:first_name) }
     it { should validate_presence_of(:last_name) }
@@ -12,19 +14,19 @@ RSpec.describe Invitation, type: :model do
     it { should validate_uniqueness_of(:email) }
   end
 
-  describe "associations" do
+  describe 'associations' do
     it { should have_one(:coach).dependent(:destroy) }
   end
 
-  describe "callbacks" do
-    describe "after_create :invite_coach" do
+  describe 'callbacks' do
+    describe 'after_create :invite_coach' do
       let(:invitation) { create(:invitation) }
 
-      it "invites a coach after creation" do
+      it 'invites a coach after creation' do
         expect { invitation }.to change { Coach.count }.by(1)
       end
 
-      it "creates a coach with correct attributes" do
+      it 'creates a coach with correct attributes' do
         invitation # Trigger creation
         coach = Coach.last
         expect(coach.email).to eq(invitation.email)
@@ -36,22 +38,22 @@ RSpec.describe Invitation, type: :model do
     end
   end
 
-  describe "custom validations" do
-    describe "#unique_coach" do
+  describe 'custom validations' do
+    describe '#unique_coach' do
       let(:invitation) { create(:invitation) }
 
-      it "adds an error if email is already present for a coach" do
+      it 'adds an error if email is already present for a coach' do
         invitation # Trigger creation
         new_invitation = build(:invitation, email: invitation.email)
         new_invitation.valid?
-        expect(new_invitation.errors[:email]).to include("already present for a coach.")
+        expect(new_invitation.errors[:email]).to include('already present for a coach.')
       end
 
-      it "does not add an error if email is not already present for a coach" do
+      it 'does not add an error if email is not already present for a coach' do
         invitation # Trigger creation
-        new_invitation = build(:invitation, email: "new@example.com")
+        new_invitation = build(:invitation, email: 'new@example.com')
         new_invitation.valid?
-        expect(new_invitation.errors[:email]).to_not include("already present for a coach.")
+        expect(new_invitation.errors[:email]).to_not include('already present for a coach.')
       end
     end
   end

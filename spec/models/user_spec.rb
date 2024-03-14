@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # spec/models/user_spec.rb
 
 require 'rails_helper'
@@ -13,7 +15,9 @@ RSpec.describe User, type: :model do
 
   describe '#name' do
     let(:invitation) { create(:invitation) }
-    let(:user) { create(:user, first_name: 'John', last_name: 'Doe', email: 'john@example.com', invitation_id: invitation.id) }
+    let(:user) do
+      create(:user, first_name: 'John', last_name: 'Doe', email: 'john@example.com', invitation_id: invitation.id)
+    end
 
     it 'returns the full name with email' do
       expect(user.name).to eq('John Doe (john@example.com)')
@@ -25,9 +29,7 @@ RSpec.describe User, type: :model do
     let(:user) { create(:user, invitation_id: invitation.id) }
 
     context 'when user has an invitation' do
-
       xit 'marks the invitation as accepted' do
-
         allow(user).to receive(:invitation).and_return(double(update: true))
         user.mark_invitation_as_accepted
 

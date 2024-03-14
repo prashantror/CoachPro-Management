@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Create Coaches
 5.times do
   coach = Coach.create!(
@@ -47,7 +49,7 @@ puts ''
 # Create CompanyPrograms
 Company.all.each do |company|
   Program.all.each do |program|
-    company_program = CompanyProgram.create!(
+    CompanyProgram.create!(
       company: company,
       program: program,
       coach: Coach.all.sample
@@ -61,7 +63,7 @@ puts ''
 
 # Create Landing Pages
 Company.all.each do |company|
-  landing_page = company.create_landing_page(
+  company.create_landing_page(
     heading: Faker::Lorem.sentence,
     description: Faker::Lorem.paragraph
   )

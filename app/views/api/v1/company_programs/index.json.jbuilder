@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.company_programs do
   json.array! @company_programs do |company_program|
     json.id company_program.id

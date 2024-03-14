@@ -1,7 +1,15 @@
-class Api::V1::Users::RegistrationsController < DeviseTokenAuth::RegistrationsController
+# frozen_string_literal: true
 
-  # Overrided method
-  def sign_up_params
-    params.permit(:email, :first_name, :last_name, :phone_number, :password, :password_confirmation, :type, :company_id)
+module Api
+  module V1
+    module Users
+      class RegistrationsController < DeviseTokenAuth::RegistrationsController
+        # Overrided method
+        def sign_up_params
+          params.permit(:email, :first_name, :last_name, :phone_number, :password, :password_confirmation, :type,
+                        :company_id)
+        end
+      end
+    end
   end
-end 
+end
