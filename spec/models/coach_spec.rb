@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Coach, type: :model do
   describe 'associations' do
     let(:response) { described_class.new }
-    context "company_programs" do
+    context 'company_programs' do
       relation = described_class.reflect_on_association(:company_programs)
       it { expect(relation.macro).to eq :has_many }
     end
-    
-    context "invitation" do
+
+    context 'invitation' do
       relation = described_class.reflect_on_association(:invitation)
       it { expect(relation.macro).to eq :belongs_to }
     end

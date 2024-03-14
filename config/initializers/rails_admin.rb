@@ -1,13 +1,15 @@
+# frozen_string_literal: true
+
 RailsAdmin.config do |config|
   config.asset_source = :webpacker
 
-  config.main_app_name = ["Administration"]
+  config.main_app_name = ['Administration']
 
   config.excluded_models = ['EmployeeCompanyProgram']
 
   config.default_hidden_fields = {
-    edit: [:id, :created_at, :updated_at],
-    show: [:id, :updated_at, :created_at]
+    edit: %i[id created_at updated_at],
+    show: %i[id updated_at created_at]
   }
 
   ### Popular gems integration
@@ -34,7 +36,7 @@ RailsAdmin.config do |config|
   ## To disable Gravatar integration in Navigation Bar set to false
   # config.show_gravatar = true
 
-  # employee 
+  # employee
   config.model 'Employee' do
     list do
       field :id
@@ -49,11 +51,12 @@ RailsAdmin.config do |config|
     end
 
     create do
-      exclude_fields :created_at, :updated_at, :reset_password_sent_at, :remember_created_at, :employee_company_programs,   :company_programs
+      exclude_fields :created_at, :updated_at, :reset_password_sent_at, :remember_created_at,
+                     :employee_company_programs, :company_programs
     end
   end
 
-  # company 
+  # company
   config.model 'Company' do
     list do
       field :id
@@ -74,15 +77,13 @@ RailsAdmin.config do |config|
     end
   end
 
-
-  # Program 
+  # Program
   config.model 'Program' do
     list do
       field :id
       field :name
       field :description
       field :enabled
-
     end
 
     edit do
@@ -127,5 +128,3 @@ RailsAdmin.config do |config|
     end
   end
 end
-
-

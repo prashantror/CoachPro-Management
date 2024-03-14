@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
-  factory :program do
-    name { Faker::Lorem.words(number: 3).join(' ') }
+  factory :landing_page do
+    heading { Faker::Quote.robin }
     description { Faker::Lorem.paragraph }
-    enabled { true }
+    association :company
   end
 end

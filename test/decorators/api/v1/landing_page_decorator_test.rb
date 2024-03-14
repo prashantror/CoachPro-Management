@@ -1,4 +1,10 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
-class Api::V1::LandingPageDecoratorTest < Draper::TestCase
+module Api
+  module V1
+    class LandingPageDecoratorTest < Draper::TestCase
+    end
+  end
 end

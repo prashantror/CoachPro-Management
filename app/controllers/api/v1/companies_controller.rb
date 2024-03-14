@@ -1,6 +1,11 @@
-class Api::V1::CompaniesController < Api::V1::ApiController
+# frozen_string_literal: true
 
-  def index
-    @companies = Company.all
+module Api
+  module V1
+    class CompaniesController < Api::V1::ApiController
+      def index
+        @companies = Company.all
+      end
+    end
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe EmployeeCompanyProgram, type: :model do
@@ -7,12 +9,12 @@ RSpec.describe EmployeeCompanyProgram, type: :model do
   let(:company_program) { create(:company_program, company: company) }
 
   describe 'associations' do
-    context "employee" do
+    context 'employee' do
       relation = described_class.reflect_on_association(:employee)
       it { expect(relation.macro).to eq :belongs_to }
     end
-    
-    context "company_program" do
+
+    context 'company_program' do
       relation = described_class.reflect_on_association(:company_program)
       it { expect(relation.macro).to eq :belongs_to }
     end
@@ -21,7 +23,8 @@ RSpec.describe EmployeeCompanyProgram, type: :model do
   describe 'validations' do
     xcontext 'with invalid details' do
       it 'validates uniqueness of employee scoped to company_program' do
-        existing_employee_company_program = create(:employee_company_program, company_program: company_program, employee: employee)
+        existing_employee_company_program = create(:employee_company_program, company_program: company_program,
+                                                                              employee: employee)
         employee_company_program.employee = existing_employee_company_program.employee
         employee_company_program.company_program = existing_employee_company_program.company_program
 
