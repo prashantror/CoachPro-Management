@@ -16,7 +16,7 @@ module Api
         @company_program = @company_programs.find_by(id: params[:id])
 
         if @company_program.present?
-          current_user.join_program(@company_program)
+          current_user.join_program(@company_program) if current_user.type == 'Employee'
         else
           render json: { message: "Company Program with ID:#{params[:id]} is not found." }, status: :not_found
         end
@@ -33,7 +33,9 @@ module Api
       end
 
       def set_company_programs
-        @company_programs = @company.company_programs.enabled_programs
+        @company_programs = @company.company_programs
+                                    .enabled_programs
+                                    .includes(:company, :program)
       end
     end
   end

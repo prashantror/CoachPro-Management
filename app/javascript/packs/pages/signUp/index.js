@@ -50,13 +50,12 @@ const SignUp = () => {
 
   return (
     <Container fluid className="ps-md-0">
-      <Row className="g-5">
+      <Row className="">
         <Col className="d-none d-md-flex col-md-4 col-lg-6 bg-image"></Col>
         <Col md={8} lg={6}>
           <div className="login d-flex align-items-center py-5">
             <Col md={9} lg={8} mx-auto>
-              <h3 className="login-heading mb-4">Hello!</h3>
-
+              <h3 class="login-heading mb-4">Register as an Employee!</h3>
               {
                 errors?.formError &&
                 <ul className="border border-danger rounded sign-up-error-message">

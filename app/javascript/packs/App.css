@@ -11,7 +11,6 @@ body {
 header {
   background-color: #333;
   color: #fff;
-  padding: 10px 0;
 }
 
 .navbar-brand {
@@ -69,4 +68,76 @@ img.cover-img {
 
 .h-100-vh {
   height: 100vh !important;
+}
+
+.navbar-brand .main-logo {
+  width: 2em;
+  height: 2em;
+}
+
+.mr-auto {
+  margin-right: auto;
+}
+
+.navbar-text {
+  display: flex;
+  justify-content: center;
+}
+
+.navbar-text a {
+  border: 1px solid #ffff;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.navbar-text a:hover {
+  color: #333333 !important;
+  background: #fff;
+}
+
+img.card-img-top {
+  height: 14em;
+}
+
+.card-title.h5,
+.card-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.company-desc-box {
+  border: 1px solid lightgray;
+  border-radius: 10px;
+}
+
+.company-desc-box h4 {
+  border-bottom: 1px solid lightgray;
+  font-weight: bold;
+  color: gray;
+}
+
+.banner-holder {
+  padding-top: 9em;
+  padding-left: 1em;
+}
+
+.banner-holder .logo-img {
+  height: 10em;
+  width: 10em;
+  border: 2px solid #fff;
+}
+
+.banner-holder h4 {
+  padding-top: 1em;
+  font-weight: bold;
+  text-shadow: 0px 0px 5px #fff;
+}
+
+.no-pgoram-data {
+  border: 1px solid lightgray;
+  width: 75%;
+  margin: 2em auto;
+  border-radius: 5px
 }

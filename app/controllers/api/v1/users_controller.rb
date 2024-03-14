@@ -15,6 +15,7 @@ module Api
 
       def set_company_programs
         @company_programs = current_user.company_programs
+                                        .includes(:company, :program)
       end
     end
   end

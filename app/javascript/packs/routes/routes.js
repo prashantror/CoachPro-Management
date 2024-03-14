@@ -1,14 +1,15 @@
 import React from 'react';
 import Login from '../pages/login';
 import SignUp from '../pages/signUp';
-import CoachHome from '../pages/coach/coachHome';
 import AcceptInvitation from '../pages/acceptInvitation';
 import CompanyLanding from '../pages/companyLanding';
+import ProgramDetails from '../pages/programDetails';
+import Dashboard from '../pages/dashboard';
 
 export const PublicRoutes = [
   {
-    path:'/',
-    element: <p>Home</p>,
+    path: '/',
+    element: <Login />,
   },
   {
     path: "/login",
@@ -19,25 +20,29 @@ export const PublicRoutes = [
     element: <SignUp />,
   },
   {
-    path: '/accept-invitation',
+    path: '/users/invitation/accept',
     element: <AcceptInvitation />
-  }
+  },
 ];
 
 export const CoachRoutes = [
   {
-    path: "coach",
-    element: <CoachHome />,
-  },
+    path: 'dashboard',
+    element: <Dashboard />,
+  }
 ];
 
 export const EmployeeRoutes = [
   {
-    path: 'company',
-    element: <CompanyLanding />,
+    path: 'dashboard',
+    element: <Dashboard />,
   },
   {
     path: 'company/:company_slug',
     element: <CompanyLanding />
+  },
+  {
+    path: 'company/:company_slug/program/:program_slug',
+    element: <ProgramDetails />
   }
 ];

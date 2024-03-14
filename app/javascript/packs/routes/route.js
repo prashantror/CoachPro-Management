@@ -29,8 +29,8 @@ export const PublicRoute = () => {
   let user = userDetails?.type || "";
 
   let userType = {
-    coach: "coach",
-    employee: "company",
+    coach: "dashboard",
+    employee: "dashboard",
   };
   if (user) {
     return <Navigate to={userType[user]} />;

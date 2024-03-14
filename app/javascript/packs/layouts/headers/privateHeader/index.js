@@ -1,41 +1,56 @@
 import React from "react";
-import { Navbar, Container, Nav } from 'react-bootstrap';
+import Logo from "./../../../assets/cp-logo.png"
 import { Link, useNavigate } from "react-router-dom";
 
-const PrivateHeaderHeader = () => {
-    const navigate = useNavigate();
-    const handleLogOut = () => {
-        localStorage.clear();
-        navigate("/");
-    };
-    return (
-        <Navbar className="navbar" expand="lg">
-            <Container>
-                <Navbar.Brand className="logo">
-                    <Link className="text-decoration-none text-white" to='/'>
-                        CoachPro
+const PrivateHeader = () => {
+  const userToken = localStorage.getItem("accessToken");
+
+  const navigate = useNavigate();
+  const handleLogOut = () => {
+    localStorage.clear();
+    navigate("/");
+  };
+
+  return (
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div className='container-fluid'>
+          <Link to="/" className="navbar-brand" >
+            <img src={Logo} className='main-logo' />
+          </Link>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <Link to="/dashboard" className="nav-link" >
+                  Dashboard
+                </Link>
+              </li>
+            </ul>
+            <div class="navbar-text">
+              {
+                userToken ? (
+                  <></>
+                ) : (
+                  <>
+                    <Link to="/login" className="nav-link" >
+                      Login
                     </Link>
-                </Navbar.Brand>
-                <Navbar.Toggle aria-controls="navbar-nav" />
-                <Navbar.Collapse id="navbar-nav" className="justify-content-end">
-                    <Nav className="nav-links">
-                        <Nav.Item>
-                            <Nav.Link className="auth text-black">
-                                <Link className="text-decoration-none text-black" to='/dashboard'>
-                                    Dashboard
-                                </Link>
-                            </Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                            <Nav.Link className="auth text-black" onClick={handleLogOut}>
-                                Log Out
-                            </Nav.Link>
-                        </Nav.Item>
-                    </Nav>
-                </Navbar.Collapse>
-            </Container>
-        </Navbar>
-    )
+                    <span>&nbsp;</span>
+                  </>
+                )
+              }
+              <Link className="auth text-black nav-link" onClick={handleLogOut} >
+                Log Out
+              </Link>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+  );
 }
 
-export default PrivateHeaderHeader
+export default PrivateHeader;

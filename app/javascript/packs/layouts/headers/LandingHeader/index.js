@@ -1,34 +1,40 @@
-import React from "react";
-import { Navbar, Container, Nav } from 'react-bootstrap';
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Logo from "./../../../assets/cp-logo.png"
 
 const LandingPageHeader = () => {
   return (
-    <Navbar className="navbar" expand="lg">
-      <Container>
-        <Navbar.Brand className="logo">
-          <Link className="text-decoration-none text-white" to='/'>
-            CoachPro
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div className='container-fluid'>
+          <Link to="/" className="navbar-brand" >
+            <img src={Logo} className='main-logo' />
           </Link>
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="navbar-nav" />
-        <Navbar.Collapse id="navbar-nav" className="justify-content-end">
-          <Nav className="nav-links">
-            <Nav.Item>
-              <Nav.Link className="auth text-black">
-                <Link className="text-decoration-none text-black" to='/login' >Login</Link>
-              </Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link className="auth text-black">
-                <Link className="text-decoration-none text-black" to='/sign-up'>Book Now</Link>
-              </Nav.Link>
-            </Nav.Item>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
-  )
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <Link to="/dashboard" className="nav-link" >
+                  Dashboard
+                </Link>
+              </li>
+            </ul>
+            <div class="navbar-text">
+              <Link to="/login" className="nav-link" >
+                Login
+              </Link>
+              <span>&nbsp;</span>
+              <Link to="/sign-up" className="nav-link" >
+                Signup
+              </Link>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+  );
 }
 
-export default LandingPageHeader
+export default LandingPageHeader;

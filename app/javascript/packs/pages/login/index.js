@@ -12,7 +12,7 @@ const Login = () => {
     event.preventDefault();
     const formData = new FormData(event.target);
     let data = Object.fromEntries(formData.entries());
-    let { response, error } = await AxiosAPIHelper({ method: 'post', url: '/users/sign_in', data })
+    let { response, error, token } = await AxiosAPIHelper({ method: 'post', url: '/users/sign_in', data })
 
     if (response) {
       setErrors((prev) => ({
@@ -20,6 +20,8 @@ const Login = () => {
         formError: ''
       }))
       localStorage.setItem("user", JSON.stringify({ ...response.data }));
+      localStorage.setItem("accessToken", token);
+      debugger
       navigate(`/company/${response?.data?.company_slug}`)
     }
     else if (error) {
@@ -37,7 +39,7 @@ const Login = () => {
 
   return (
     <Container fluid className="ps-md-0">
-      <Row className="g-5">
+      <Row className="">
         <Col className="d-none d-md-flex col-md-4 col-lg-6 bg-image"></Col>
         <Col md={8} lg={6}>
           <div className="login d-flex align-items-center py-5">
