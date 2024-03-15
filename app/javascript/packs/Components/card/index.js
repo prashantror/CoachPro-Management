@@ -13,7 +13,7 @@ function CardComponent(props) {
     };
 
     return (
-        <Card style={{ width: '18rem', margin: '0 auto' }}>
+        <Card style={{ width: '95%', margin: '0 auto' }}>
             <Card.Img variant="top" src={image} />
             <Card.Body>
                 <Card.Title>{title}</Card.Title>
