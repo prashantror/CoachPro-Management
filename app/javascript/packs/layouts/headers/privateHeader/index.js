@@ -1,35 +1,43 @@
 import React from "react";
 import Logo from "./../../../assets/cp-logo.png"
-import { Link, useNavigate } from "react-router-dom";
+import { Link, json, useNavigate } from "react-router-dom";
 
 const PrivateHeader = () => {
   const userToken = localStorage.getItem("accessToken");
-
+  const user = JSON.parse(localStorage.getItem("user"));
+  let type = user?.type
+  const companySlug = user?.company_slug
   const navigate = useNavigate();
   const handleLogOut = () => {
     localStorage.clear();
     navigate("/");
   };
-
   return (
     <header>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className='container-fluid'>
           <Link to="/" className="navbar-brand" >
             <img src={Logo} className='main-logo' />
           </Link>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarText">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item">
-                <Link to="/dashboard" className="nav-link" >
+          <div className="collapse navbar-collapse" id="navbarText">
+            <ul className="navbar-nav mr-auto">
+              <li className="nav-item">
+                <Link to={`${type}/dashboard`} className="nav-link" >
                   Dashboard
                 </Link>
               </li>
+              {companySlug &&
+                <li className="nav-item">
+                  <Link to={`${type}/company/${companySlug}`} className="nav-link" >
+                    Company Dashboard
+                  </Link>
+                </li>
+              }
             </ul>
-            <div class="navbar-text">
+            <div className="navbar-text">
               {
                 userToken ? (
                   <></>

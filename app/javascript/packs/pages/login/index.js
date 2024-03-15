@@ -20,9 +20,12 @@ const Login = () => {
         formError: ''
       }))
       localStorage.setItem("user", JSON.stringify({ ...response.data }));
-      localStorage.setItem("accessToken", token);
-      debugger
-      navigate(`/company/${response?.data?.company_slug}`)
+      localStorage.setItem("accessToken", token); 
+      if(response.data?.type === 'coach'){
+        navigate(`coach/dashboard`)
+      }else{
+        navigate(`/company/${response?.data?.company_slug}`)
+      }
     }
     else if (error) {
       let errormessage = error?.errors
@@ -43,7 +46,7 @@ const Login = () => {
         <Col className="d-none d-md-flex col-md-4 col-lg-6 bg-image"></Col>
         <Col md={8} lg={6}>
           <div className="login d-flex align-items-center py-5">
-            <Col md={9} lg={8} mx-auto>
+            <Col md={9} lg={8} mx-auto='true'>
               <h3 className="login-heading mb-4">Welcome back!</h3>
               {
                 errors?.formError &&
@@ -53,22 +56,22 @@ const Login = () => {
               }
               <Form onSubmit={handleFormSubmit}>
                 <Form.Group className="mb-3" controlId="floatingInput">
+                  <Form.Label>Email address</Form.Label>
                   <Form.Control
                     type="email"
                     placeholder="name@example.com"
                     name="email"
                     required
                   />
-                  <Form.Label>Email address</Form.Label>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="floatingPassword">
+                  <Form.Label>Password</Form.Label>
                   <Form.Control
                     type="password"
                     placeholder="Password"
                     name="password"
                     required
                   />
-                  <Form.Label>Password</Form.Label>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="rememberPasswordCheck">
                   <Form.Check

@@ -37,7 +37,7 @@ const AxiosAPIHelper = async (details) => {
             params
         }))
 
-        if ([200].includes(response.status)) {
+        if ([200, 202].includes(response.status)) {
             responseData = await response.data
             authorizationToken = await response.headers.authorization
         }

@@ -33,7 +33,7 @@ export const PublicRoute = () => {
     employee: "dashboard",
   };
   if (user) {
-    return <Navigate to={userType[user]} />;
+    return <Navigate to={`${user}/${userType[user]}`} />;
   }
   return (
     <>

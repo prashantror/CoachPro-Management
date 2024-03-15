@@ -55,7 +55,7 @@ const SignUp = () => {
         <Col md={8} lg={6}>
           <div className="login d-flex align-items-center py-5">
             <Col md={9} lg={8} mx-auto>
-              <h3 class="login-heading mb-4">Register as an Employee!</h3>
+              <h3 className="login-heading mb-4">Register as an Employee!</h3>
               {
                 errors?.formError &&
                 <ul className="border border-danger rounded sign-up-error-message">

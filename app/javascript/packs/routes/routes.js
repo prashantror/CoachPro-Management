@@ -23,26 +23,34 @@ export const PublicRoutes = [
     path: '/users/invitation/accept',
     element: <AcceptInvitation />
   },
+  {
+    path: '/company/:company_slug',
+    element: <CompanyLanding />
+  },
 ];
 
 export const CoachRoutes = [
   {
-    path: 'dashboard',
+    path: 'coach/dashboard',
     element: <Dashboard />,
+  },
+  {
+    path: 'coach/company/:company_slug/program/:program_slug',
+    element: <ProgramDetails />
   }
 ];
 
 export const EmployeeRoutes = [
   {
-    path: 'dashboard',
+    path: 'employee/dashboard',
     element: <Dashboard />,
   },
   {
-    path: 'company/:company_slug',
+    path: 'employee/company/:company_slug',
     element: <CompanyLanding />
   },
   {
-    path: 'company/:company_slug/program/:program_slug',
+    path: 'employee/company/:company_slug/program/:program_slug',
     element: <ProgramDetails />
   }
 ];

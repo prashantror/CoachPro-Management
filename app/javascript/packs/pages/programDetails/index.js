@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import AxiosAPIHelper from '../../heplers/AxiosHelper';
 import Loader from '../../constants/Loader';
 import NoDataFound from '../../constants/NoDataFound';
+import { Button } from 'react-bootstrap';
 
 
 const ProgramDetails = () => {
   const { program_slug } = useParams();
   const [companyProgram, setCompanyProgram] = useState('')
+
+  const navigate = useNavigate()
   const [isLoading, setIsloading] = useState(true)
 
   useEffect(() => {
@@ -28,6 +31,10 @@ const ProgramDetails = () => {
     }
   }
 
+  const handleGoBack = () => {
+    navigate(-1)
+  }
+
   return (
     isLoading ? <Loader />
       : companyProgram ?
@@ -37,15 +44,20 @@ const ProgramDetails = () => {
             <div className='position-absolute d-flex justify-content-left align-items-left gap-5 h-100 w-100 banner-holder'>
             </div>
           </div>
-          <div className='heading w-75 m-auto my-5 company-desc-box p-2 company-desc-box'>
-            <h4>Program</h4>
-            <p>{companyProgram?.name}</p>
-            <hr />
-            <h4>Coach</h4>
-            <p>{companyProgram?.coach_name}</p>
-            <hr />
-            <h4>About</h4>
-            <p>{companyProgram?.description}</p>
+          <div className='d-flex align-items-start justify-content-center my-5 gap-2'>
+            <div className=''>
+              <Button variant="primary" size="sm" onClick={handleGoBack}>GO Back</Button>
+            </div>
+            <div className='heading company-desc-box p-2 company-desc-box col-8'>
+              <h4>Program</h4>
+              <p>{companyProgram?.name}</p>
+              <hr />
+              <h4>Coach</h4>
+              <p>{companyProgram?.coach_name}</p>
+              <hr />
+              <h4>About</h4>
+              <p>{companyProgram?.description}</p>
+            </div>
           </div>
         </div>
         : <NoDataFound />
