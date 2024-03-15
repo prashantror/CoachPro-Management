@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import "./SignUp.css";
 import AxiosAPIHelper from "../../heplers/AxiosHelper";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 const SignUp = () => {
+  const { company_slug } = useParams();
   const [companies, setCompanies] = useState([])
+  const [selectSlug, setSelectsSlug] = useState()
   const [errors, setErrors] = useState({})
   const navigate = useNavigate()
   useEffect(() => {
@@ -16,6 +18,9 @@ const SignUp = () => {
     let { response, error } = await AxiosAPIHelper({ url: '/api/v1/companies' })
     if (response.length) {
       setCompanies(response)
+      let slug = response.find((item) => item.slug === company_slug)
+      setSelectsSlug(slug)
+
     } else {
       setErrors((prev) => ({
         ...prev,
@@ -27,7 +32,7 @@ const SignUp = () => {
     event.preventDefault();
     const formData = new FormData(event.target);
     let data = Object.fromEntries(formData.entries());
-    let { response, error } = await AxiosAPIHelper({ method: 'post', url: '/users', data: { ...data, type: 'Employee' } })
+    let { response, error } = await AxiosAPIHelper({ method: 'post', url: '/users', data: { ...data, type: 'Employee', company_id: selectSlug ? selectSlug.id : data?.company_id } })
     if (response) {
       setErrors((prev) => ({
         ...prev,
@@ -119,14 +124,26 @@ const SignUp = () => {
                   <Col md={6}>
                     <Form.Group className="mb-3" controlId="company-name">
                       <Form.Label>Company</Form.Label>
-                      <Form.Select name="company_id">
-                        <option value='' >Select company</option>
-                        {companies.map((company) => {
-                          return (
-                            <option value={company.id} key={company.id}>{company.name}</option>
-                          )
-                        })}
-                      </Form.Select>
+                      {
+                        company_slug ?
+                          <Form.Control
+                            type="text"
+                            name="company_id"
+                            required
+                            value={selectSlug?.name}
+                            disabled
+                          />
+                          :
+                          <Form.Select name="company_id">
+                            <option value='' >Select company</option>
+                            {companies.map((company) => {
+                              return (
+                                <option value={company.id} key={company.id}>{company.name}</option>
+                              )
+                            })}
+                          </Form.Select>
+                      }
+
                     </Form.Group>
                   </Col>
                 </Row>
@@ -135,7 +152,7 @@ const SignUp = () => {
                     <Form.Group className="mb-3" controlId="job-title">
                       <Form.Label>Password</Form.Label>
                       <Form.Control
-                        type="text"
+                        type="password"
                         placeholder="**********"
                         name="password"
                       />
@@ -145,7 +162,7 @@ const SignUp = () => {
                     <Form.Group className="mb-3" controlId="date">
                       <Form.Label>Confirm Password</Form.Label>
                       <Form.Control
-                        type="text"
+                        type="password"
                         placeholder="**********"
                         name="password_confirmation"
                       />

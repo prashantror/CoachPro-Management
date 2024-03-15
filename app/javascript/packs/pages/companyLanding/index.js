@@ -29,13 +29,13 @@ const CompanyLanding = () => {
       setCompanyData(response)
       let company_id = response.id
       if (company_id) {
-        getCompanyProgramData(company_id, 1)
-        setIsloading(false)
+        await getCompanyProgramData(company_id, 1)
       } else {
-        setIsloading(false)
         setCompanyData('')
       }
     }
+    setIsloading(false)
+
   }
 
   const onPageChange = ({ selected }) => {

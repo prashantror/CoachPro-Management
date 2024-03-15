@@ -16,7 +16,7 @@ export const PublicRoutes = [
     element: <Login />,
   },
   {
-    path: "/sign-up",
+    path: "/company/:company_slug/sign-up",
     element: <SignUp />,
   },
   {

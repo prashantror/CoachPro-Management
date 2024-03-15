@@ -83,7 +83,7 @@ RSpec.describe Coach, type: :model do
       end
     end
 
-    xdescribe '#mark_invitation_as_accepted' do
+    describe '#mark_invitation_as_accepted' do
       let(:invitation) { create(:invitation) }
 
       it 'marks invitation as accepted' do

@@ -69,7 +69,7 @@ const AcceptInvitation = () => {
                                     <Form.Label>Password Confirmation</Form.Label>
                                     <Form.Control
                                         type="password"
-                                        placeholder="Password"
+                                        placeholder="Password Confirmation"
                                         name="password_confirmation"
                                         required
                                     />

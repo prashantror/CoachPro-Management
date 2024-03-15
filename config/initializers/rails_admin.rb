@@ -5,7 +5,7 @@ RailsAdmin.config do |config|
 
   config.main_app_name = ['Administration']
 
-  config.excluded_models = ['EmployeeCompanyProgram']
+  config.excluded_models = %w[EmployeeCompanyProgram User]
 
   config.default_hidden_fields = {
     edit: %i[id created_at updated_at],

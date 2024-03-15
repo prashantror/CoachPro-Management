@@ -27,16 +27,16 @@ const LandingPageHeader = () => {
               <Link to="/login" className="nav-link" >
                 Login
               </Link>
-              { company_slug ? (
+              {company_slug ? (
                 <>
-                <span>&nbsp;</span>
-                <Link to="/sign-up" className="nav-link" >
-                  Signup
-                </Link>
+                  <span>&nbsp;</span>
+                  <Link to={`/company/${company_slug}/sign-up`} className="nav-link" >
+                    Signup
+                  </Link>
                 </>
               ) : (
                 <></>
-              ) }
+              )}
             </div>
           </div>
         </div>

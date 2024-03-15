@@ -8,7 +8,7 @@ class Invitation < ApplicationRecord
   validates :email, uniqueness: true
 
   after_create :invite_coach
-  validate :unique_coach
+  validate :unique_coach, on: :create
 
   def invite_coach
     Coach.invite!(email: email, first_name: first_name, last_name: last_name, phone_number: phone_number,
