@@ -10,7 +10,7 @@ The CoachPro Management App aims to develop a comprehensive system for managing 
 - [Clone](#clone)
 - [Installation](#installation)
 - [Usage](#usage)
-- 
+  
 ## Clone 
 1. *Clone the repository*
    ```bash
@@ -91,11 +91,11 @@ The CoachPro Management App aims to develop a comprehensive system for managing 
 7. **Run the seed file :**
    Ensure you have updated Postgres username and password.
    ##
-   Execute the following command :
+   Execute the following command to get the dummy data on local:
    ```bash
    rails db:seed
 
-8. **Run the Project :**
-   Execute the following command :
+9. **Run the Project :**
+   Execute the following command to start the rails server:
    ```bash
    rails s
